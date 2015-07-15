@@ -1,2 +1,2 @@
 # just-do-it
-create an front-end project for react
+create a front-end project for react
