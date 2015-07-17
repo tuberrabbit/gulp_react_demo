@@ -27,7 +27,7 @@ if (gutil.env.watch) {
 
 gulp.task('dev', ()=> {
     watcher.setWatcher()
-    gulp.start(['build'])
+    gulp.start(['build', 'server'])
 })
 
 gulp.task('default', ['build'])
