@@ -10,7 +10,8 @@ _.set(gutil.env, 'base.dest', 'dest')
 _.set(gutil.env, 'tasks.build', {
     taskQuene: [
         'clean',
-        'copy'
+        'copy',
+        'stylus'
     ]
 })
 

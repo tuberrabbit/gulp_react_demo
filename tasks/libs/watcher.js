@@ -3,7 +3,7 @@ import through from 'through'
 
 let watcher = false
 export default {
-    isWatcher() {
+    isWatching() {
         return watcher
     },
     setWatcher() {

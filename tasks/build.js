@@ -9,5 +9,6 @@ export default gulp.task(TASK_NAME, (cb)=> {
         taskQuene: []
     }
     const conf = _.merge({}, defaultConfig, _.get(gutil.env, ['tasks', TASK_NAME]))
+
     runSequence.apply(gulp, [].concat(conf.taskQuene).concat(cb))
 })
