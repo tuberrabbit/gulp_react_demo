@@ -4,11 +4,12 @@ import loadTasks from 'require-dir'
 import _ from 'lodash'
 
 loadTasks('./tasks')
-//_.set(gutil.env, 'base.src', 'src')
-_.set(gutil.env, 'base.dist', 'dist')
+_.set(gutil.env, 'base.src', 'src')
+_.set(gutil.env, 'base.dest', 'dest')
 _.set(gutil.env, 'tasks.build', {
     taskQuene: [
-        'clean'
+        'clean',
+        'copy'
     ]
 })
 gulp.task('default', ['build'])
