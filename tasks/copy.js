@@ -3,9 +3,11 @@ import gutil from 'gulp-util'
 import _ from 'lodash'
 import mergeStream from 'merge-stream'
 import rename from 'gulp-rename'
+import watcher from './libs/watcher'
 
 const TASK_NAME = 'copy'
 export default gulp.task(TASK_NAME, ()=> {
+
     const defaultConfig = {
         'files': [
             {
@@ -15,16 +17,26 @@ export default gulp.task(TASK_NAME, ()=> {
         ]
     }
     const conf = _.merge({}, defaultConfig, _.get(gutil.env, ['tasks', TASK_NAME]))
+
     function bundleThis(fileConfig = {}) {
         fileConfig.options = _.merge({}, conf.options, fileConfig.options)
+
         function bundle(fileConf) {
             return gulp.src(fileConf.src)
                 .pipe(rename({
                     dirname: ''
                 }))
                 .pipe(gulp.dest(fileConf.dest))
+                .pipe(watcher.pipeTimer(TASK_NAME))
+        }
+
+        if (watcher.isWatcher()) {
+            gulp.watch(fileConfig.src, ()=> {
+                bundle(fileConfig)
+            })
         }
         return bundle(fileConfig)
     }
+
     return mergeStream.apply(gulp, _.map(conf.files, bundleThis))
 })

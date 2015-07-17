@@ -2,6 +2,7 @@ import gulp from 'gulp'
 import gutil from 'gulp-util'
 import loadTasks from 'require-dir'
 import _ from 'lodash'
+import watcher from './tasks/libs/watcher'
 
 loadTasks('./tasks')
 _.set(gutil.env, 'base.src', 'src')
@@ -12,4 +13,18 @@ _.set(gutil.env, 'tasks.build', {
         'copy'
     ]
 })
+
+if (gutil.env.prod) {
+    process.env.NODE_ENV = 'production'
+}
+
+if (gutil.env.watch) {
+    watcher.setWatcher()
+}
+
+gulp.task('dev', ()=> {
+    watcher.setWatcher()
+    gulp.start(['build'])
+})
+
 gulp.task('default', ['build'])

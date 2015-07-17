@@ -24,7 +24,8 @@
     "gulp-util": "^3.0.6",
     "merge-stream": "^0.1.8",
     "require-dir": "^0.3.0",
-    "run-sequence": "^1.1.1"
+    "run-sequence": "^1.1.1",
+    "through": "^2.3.8"
   },
   "dependencies": {
     "lodash": "^3.10.0"
