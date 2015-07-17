@@ -11,6 +11,7 @@ _.set(gutil.env, 'tasks.build', {
     taskQuene: [
         'clean',
         'copy',
+        'jade',
         'stylus',
         'browserify'
     ]
