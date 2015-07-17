@@ -5,10 +5,10 @@ import _ from 'lodash'
 
 loadTasks('./tasks')
 //_.set(gutil.env, 'base.src', 'src')
-//_.set(gutil.env, 'base.dist', 'dist')
+_.set(gutil.env, 'base.dist', 'dist')
 _.set(gutil.env, 'tasks.build', {
     taskQuene: [
-        //'clean'
+        'clean'
     ]
 })
-gulp.task('default', [])
+gulp.task('default', ['build'])
