@@ -9,6 +9,7 @@ _.set(gutil.env, 'base.src', 'src')
 _.set(gutil.env, 'base.dest', 'dest')
 _.set(gutil.env, 'tasks.build', {
   taskQuene: [
+    'eslint',
     'clean',
     'copy',
     'jade',
